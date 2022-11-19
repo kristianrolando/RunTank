@@ -13,18 +13,21 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstructionMask;
 
+    public float fireRate;
+    public float rangeShoot;
+    public float damagePower;
+
+    public float turnSpeed = 10f;
+
+    [SerializeField]
+    private float fireCountdown;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVROutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     IEnumerator FOVROutine()
     {
@@ -53,20 +56,63 @@ public class FieldOfView : MonoBehaviour
                 if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     canSee = true;
+                    player = target.gameObject;
                 }
                 else
                 {
                     canSee = false;
+                    player = null;
                 }
             }
             else
             {
                 canSee = false;
+                player = null;
             }
         }
         else if (canSee)
         {
             canSee = false;
+            player = null;
         }
+    }
+
+    public void SpawnBullet()
+    {
+        Debug.Log("spawn bullet enemy");
+    }
+
+    void Update()
+    {
+        
+            if (player == null)
+            {
+
+                return;
+            }
+
+            LockOnTarget();
+
+            if (fireCountdown <= 0f)
+            {
+                    Shoot();
+                fireCountdown = 1f / fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
+
+    }
+
+    void LockOnTarget()
+    {
+        Vector3 dir = player.transform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    void Shoot()
+    {
+        SpawnBullet();
     }
 }

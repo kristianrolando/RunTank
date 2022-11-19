@@ -22,6 +22,8 @@ public class FieldOfViewEditor : Editor
             Handles.color = Color.green;
             Handles.DrawLine(fov.transform.position, fov.player.transform.position);
             Debug.Log("PLAYER DETECTED");
+           // fov.transform.LookAt(fov.player.transform);
+            //fov.SpawnBullet();
         }
     }
 
