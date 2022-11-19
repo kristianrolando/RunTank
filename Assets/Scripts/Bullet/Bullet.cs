@@ -16,7 +16,7 @@ public class Bullet : PoolObject
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
-        Invoke("StoreToPool", 3f);
+        //Invoke("StoreToPool", 3f);
     }
     public void Move(Transform firePoint)
     {

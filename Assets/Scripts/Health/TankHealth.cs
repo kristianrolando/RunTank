@@ -6,24 +6,27 @@ using UnityEngine.UI;
 
 public class TankHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] float health = 100;
+    [SerializeField] float maxHealth = 100;
     [SerializeField] Slider healthSlider;
+
+    float health;
 
     private void OnEnable()
     {
+        health = maxHealth;
+        healthSlider.maxValue = health;
         UpdateSlider();
     }
     void UpdateSlider()
     {
-        healthSlider.value = 1/health;
+        healthSlider.value = health;
     }
 
     public void GotDamage(float damage)
     {
-        health -= health;
+        health -= damage;
         UpdateSlider();
-
-        if(health <= 0)
+        if (health <= 0)
         {
             DieCondition();
         }
