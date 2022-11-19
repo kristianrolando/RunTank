@@ -20,6 +20,7 @@ public class Bullet : PoolObject
     }
     public void Move(Transform firePoint)
     {
+        Debug.Log("Move");
         rb.velocity = firePoint.forward * speed;
     }
 

@@ -92,6 +92,7 @@ public class FieldOfView : MonoBehaviour
         LockOnTarget();
         if (fireCountdown <= 0f)
         {
+            Debug.Log("Shoot");
             shoot.Shoot();
             fireCountdown = 1f / fireRate;
         }
