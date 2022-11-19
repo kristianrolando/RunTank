@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class TankHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] float health = 100;
     [SerializeField] Slider healthSlider;
