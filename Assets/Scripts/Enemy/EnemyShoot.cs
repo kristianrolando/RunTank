@@ -13,7 +13,7 @@ public class EnemyShoot : MonoBehaviour
     PoolingSystem pool = new PoolingSystem();
 
 
-    void Shoot()
+    public void Shoot()
     {
         GameObject _bullet = CreateObject(firePoint.position);
         var b = _bullet.GetComponent<Bullet>();

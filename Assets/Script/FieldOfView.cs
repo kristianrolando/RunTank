@@ -22,6 +22,11 @@ public class FieldOfView : MonoBehaviour
     [SerializeField]
     private float fireCountdown;
 
+    EnemyShoot shoot;
+    private void Awake()
+    {
+        shoot = GetComponent<EnemyShoot>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -77,30 +82,21 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    public void SpawnBullet()
+    private void Update()
     {
-        Debug.Log("spawn bullet enemy");
-    }
+        if (player == null)
+        {
 
-    void Update()
-    {
-        
-            if (player == null)
-            {
+            return;
+        }
+        LockOnTarget();
+        if (fireCountdown <= 0f)
+        {
+            shoot.Shoot();
+            fireCountdown = 1f / fireRate;
+        }
 
-                return;
-            }
-
-            LockOnTarget();
-
-            if (fireCountdown <= 0f)
-            {
-                    Shoot();
-                fireCountdown = 1f / fireRate;
-            }
-
-            fireCountdown -= Time.deltaTime;
-
+        fireCountdown -= Time.deltaTime;
     }
 
     void LockOnTarget()
@@ -109,10 +105,5 @@ public class FieldOfView : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-    }
-
-    void Shoot()
-    {
-        SpawnBullet();
     }
 }
