@@ -27,11 +27,11 @@ public class Bullet : PoolObject
     {
         base.StoreToPool();
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<IDamageable>() != null && collision.gameObject.tag == tagTarget)
+        if (other.gameObject.GetComponent<IDamageable>() != null && other.gameObject.tag == tagTarget)
         {
-            collision.gameObject.GetComponent<IDamageable>().GotDamage(damage);
+            other.gameObject.GetComponent<IDamageable>().GotDamage(damage);
             StoreToPool();
         }
         StoreToPool();
