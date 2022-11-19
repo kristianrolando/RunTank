@@ -12,15 +12,21 @@ public class Bullet : PoolObject
     public float damage;
 
     Rigidbody rb;
-
+    Vector3 startPos;
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
-        //Invoke("StoreToPool", 3f);
+        startPos = transform.position;
+    }
+    private void Update()
+    {
+        if(Vector3.Distance(startPos, transform.position) > 50f)
+        {
+            StoreToPool();
+        }
     }
     public void Move(Transform firePoint)
     {
-        Debug.Log("Move");
         rb.velocity = firePoint.forward * speed;
     }
 

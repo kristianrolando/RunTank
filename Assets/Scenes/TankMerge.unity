@@ -612,7 +612,7 @@ MonoBehaviour:
     _right: 100
   _rotateSpeed: 100
   _moveRotateSpeed: 5
-  _moveSpeed: 1
+  _moveSpeed: 3
 --- !u!114 &397723260
 MonoBehaviour:
   m_ObjectHideFlags: 0
