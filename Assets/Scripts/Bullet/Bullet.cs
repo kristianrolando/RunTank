@@ -31,7 +31,6 @@ public class Bullet : PoolObject
     {
         if (collision.gameObject.GetComponent<IDamageable>() != null && collision.gameObject.tag == tagTarget)
         {
-            Debug.Log("enemy");
             collision.gameObject.GetComponent<IDamageable>().GotDamage(damage);
             StoreToPool();
         }
