@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ColourData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static ColourData instance;
 
-    // Update is called once per frame
-    void Update()
+    public int p1Colour;
+    public int p2Colour;
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
