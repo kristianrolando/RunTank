@@ -1533,7 +1533,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397723256}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3169,7 +3169,7 @@ MonoBehaviour:
     _fire: 303
   _rotateSpeed: 100
   _moveRotateSpeed: 5
-  _moveSpeed: 1
+  _moveSpeed: 3
 --- !u!54 &905789363
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3178,7 +3178,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905789361}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
