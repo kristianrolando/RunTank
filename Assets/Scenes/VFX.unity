@@ -1846,7 +1846,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &359420252
 MonoBehaviour:
@@ -1860,7 +1860,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d9125625c875c48a820010eee03e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualEffect: []
+  visualEffect:
+  - name: bullet explosion
+    visualPref: {fileID: 4952544043021685123, guid: 5d47a1ebc23253144bbc1337b0c3f04b, type: 3}
+  - name: die explosion
+    visualPref: {fileID: 5386314196527650956, guid: 3a3b438e6ee15ee409cbd607acd565e3, type: 3}
 --- !u!1 &381764070
 GameObject:
   m_ObjectHideFlags: 0
@@ -9268,7 +9272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8028182646007050655, guid: a3c0fb8c6f971614b848e7109efac931, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8028182646007050655, guid: a3c0fb8c6f971614b848e7109efac931, type: 3}
       propertyPath: m_LocalPosition.x
