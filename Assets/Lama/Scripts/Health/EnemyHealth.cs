@@ -50,6 +50,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _s.enemyActive -= 1;
         int idx = spawner.enemyList.IndexOf(gameObject);
         spawner.enemyList.RemoveAt(idx);
+
+        GameManager.instance.AddScore();
         Destroy(gameObject);
     }
 }
