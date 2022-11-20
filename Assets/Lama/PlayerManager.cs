@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         SetController();
-        ChangeMaterialColor(3);
+        ChangeMaterialColor();
     }
 
     // Update is called once per frame
@@ -28,10 +28,10 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    private void ChangeMaterialColor(int idx)
+    private void ChangeMaterialColor()
     {
-        player1obj.SetMaterial(player1Mat[idx].bodyMat);
-        player2obj.SetMaterial(player2Mat[idx].bodyMat);
+        player1obj.SetMaterial(player1Mat[ColourData.instance.p1Colour].bodyMat);
+        player2obj.SetMaterial(player2Mat[ColourData.instance.p1Colour].bodyMat);
     }
 
     private void SetController()
