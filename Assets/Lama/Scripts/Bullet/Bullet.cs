@@ -34,6 +34,7 @@ public class Bullet : PoolObject
     {
         base.StoreToPool();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<IDamageable>() != null && other.gameObject.tag == tagTarget)
@@ -42,9 +43,10 @@ public class Bullet : PoolObject
             StoreToPool();
         }
 
-        if(other.gameObject.tag != "Detector")
+        if(other.gameObject.tag != "Detector" || other.gameObject.tag != tagTarget)
         {
             StoreToPool();
         }
+        
     }
 }

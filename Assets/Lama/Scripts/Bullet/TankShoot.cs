@@ -9,7 +9,7 @@ public class TankShoot : MonoBehaviour
     [SerializeField] float damageBullet;
     [SerializeField] string tagTarget = "Enemy";
     [SerializeField] KeyCode shootInput;
-    [SerializeField] float fireRate = 5f;
+    //[SerializeField] float fireRate = 5f;
     [SerializeField] Bullet bulletPref;
     PoolingSystem pool = new PoolingSystem();
 
@@ -18,18 +18,23 @@ public class TankShoot : MonoBehaviour
 
     private void Update()
     {
-        time -= Time.deltaTime;
-        if (time <= 0f)
-        {
-            isCanShoot = true;
-            time = 1 / fireRate;
-        }
-        if (Input.GetKeyDown(shootInput) && isCanShoot)
+        if (Input.GetKeyDown(shootInput))
         {
             Shoot();
-            isCanShoot = false;
-            time = 1 / fireRate;
         }
+
+        //time -= Time.deltaTime;
+        //if (time <= 0f)
+        //{
+        //    isCanShoot = true;
+        //    time = 1 / fireRate;
+        //}
+        //if (Input.GetKeyDown(shootInput) && isCanShoot)
+        //{
+        //    Shoot();
+        //    isCanShoot = false;
+        //    time = 1 / fireRate;
+        //}
 
     }
     void Shoot()

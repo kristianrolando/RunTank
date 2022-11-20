@@ -9,7 +9,7 @@ public class EnemyDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Detector")
         {
             EnemyMove move = health.gameObject.GetComponent<EnemyMove>();
             move.GoBack();
