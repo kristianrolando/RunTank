@@ -21,10 +21,16 @@ public class TankMovement : MonoBehaviour
 
     [SerializeField]
     private float _moveSpeed;
+
+    [SerializeField]
+    private GameObject headObj;
+
+    [SerializeField]
+    private GameObject bodyObj;
     // Start is called before the first frame update
     void Start()
     {
-        SetShootInput();
+
     }
 
     void Update()
@@ -64,7 +70,11 @@ public class TankMovement : MonoBehaviour
         forward.y = 0f;
         forward.Normalize();
 
-        transform.Translate(forward * minus * _moveSpeed  * Time.deltaTime);
+        //   transform.Translate(forward * minus * _moveSpeed  * Time.deltaTime);
+
+        //transform.forward = forward;
+        transform.position += forward * minus * Time.deltaTime * _moveSpeed;
+        
         FixRotate();
     }
 
@@ -79,5 +89,29 @@ public class TankMovement : MonoBehaviour
     {
         TankShoot shoot = gameObject.GetComponent<TankShoot>();
         shoot.SetShootInput(inputStruct._fire);
+    }
+
+    public void SetMaterial(Material mat)
+    {
+        MeshRenderer headmat =  headObj.GetComponent<MeshRenderer>();
+        headmat.material = mat;
+
+        MeshRenderer bodymat =  bodyObj.GetComponent<MeshRenderer>();
+        bodymat.material = mat;
+    }
+
+    public void SetController(ControllerStruct obj)
+    {
+        inputStruct._forward = obj._forward;
+
+        inputStruct._backward = obj._backward;
+
+        inputStruct._left = obj._left;
+
+        inputStruct._right = obj._right;
+
+        inputStruct._fire = obj._fire;
+
+        SetShootInput();
     }
 }

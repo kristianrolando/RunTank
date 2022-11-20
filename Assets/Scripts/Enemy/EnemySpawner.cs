@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int enemyAmount = 4;
     public PosSpawn[] posSpawn;
 
-    public Waypoint waypoint;
+
+    public List<Waypoint> waypoint;
 
     [HideInInspector] public int enemyActive;
 
@@ -31,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject obj = Instantiate(enemyPref, posSpawn[i].pointSpawn.position, Quaternion.identity);
             obj.GetComponent<EnemyHealth>().id = i;
             EnemyMove move = obj.GetComponent<EnemyMove>();
-            move.target = waypoint;
+            move.target = waypoint[i];
             enemyList.Add(obj);
             EnemyHealth health = obj.GetComponent<EnemyHealth>();
             health.spawner = this;

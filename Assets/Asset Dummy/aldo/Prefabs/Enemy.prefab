@@ -579,7 +579,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &5488802505191952520
 MonoBehaviour:
@@ -593,10 +593,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96e4a4dc7cb61448ba5f6e84bcafdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 50
   player: {fileID: 0}
   canSee: 0
-  angle: 120
+  angle: 180
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -604,7 +604,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   fireRate: 1
-  rangeShoot: 4
+  rangeShoot: 50
   damagePower: 50
   turnSpeed: 10
   _orFireCountdown: 2

@@ -12,8 +12,8 @@ public class EnemyDetector : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             EnemyMove move = health.gameObject.GetComponent<EnemyMove>();
-          //  move.GoBack();
-            checkIndex(other.gameObject);
+            move.GoBack();
+           // checkIndex(other.gameObject);
         }
     }
 
