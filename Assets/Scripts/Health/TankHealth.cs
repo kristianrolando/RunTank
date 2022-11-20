@@ -35,4 +35,12 @@ public class TankHealth : MonoBehaviour, IDamageable
     {
 
     }
+    public void HealthEffect(float health)
+    {
+        
+    }
+    public void ImmuneEffect(float immune)
+    {
+
+    }
 }
