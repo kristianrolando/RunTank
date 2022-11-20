@@ -6,4 +6,5 @@ public class InputStruct
     public KeyCode _backward;
     public KeyCode _left;
     public KeyCode _right;
+    public KeyCode _fire;
 }

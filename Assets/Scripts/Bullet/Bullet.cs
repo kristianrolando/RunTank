@@ -41,6 +41,10 @@ public class Bullet : PoolObject
             other.gameObject.GetComponent<IDamageable>().GotDamage(damage);
             StoreToPool();
         }
-        StoreToPool();
+
+        if(other.gameObject.tag != "Detector")
+        {
+            StoreToPool();
+        }
     }
 }

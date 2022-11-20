@@ -12,6 +12,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] Bullet bulletPref;
     PoolingSystem pool = new PoolingSystem();
 
+    
 
     public void Shoot()
     {
