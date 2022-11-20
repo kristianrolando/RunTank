@@ -20,11 +20,6 @@ public class ItemSpawner : MonoBehaviour
         {
             RandomPos();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CheckItemPos();
-        }
     }
 
     bool IsItemNotActive()

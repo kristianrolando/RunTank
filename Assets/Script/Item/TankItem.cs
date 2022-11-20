@@ -16,24 +16,6 @@ public class TankItem : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Item")
-        {
-            string nameTemp = collision.gameObject.GetComponent<Item>().itemPlayer;
-
-            if (nameTemp == gameObject.name)
-            {
-                Debug.Log("RIGHT ITEM");
-                collision.gameObject.SetActive(false);
-            }
-            else
-            {
-                Debug.Log("WRONG ITEM");
-            }
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Item")
@@ -49,6 +31,12 @@ public class TankItem : MonoBehaviour
             {
                 Debug.Log("WRONG ITEM");
             }
+        }
+
+        if(other.gameObject.tag == "PowerUpItem")
+        {
+            PowerUpItem pwItem = GameObject.Find("Power Up Item Generator").GetComponent<PowerUpItem>();
+            pwItem.CheckItem();
         }
     }
 }
