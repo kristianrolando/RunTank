@@ -610,6 +610,7 @@ MonoBehaviour:
     _backward: 115
     _left: 97
     _right: 100
+    _fire: 114
   _rotateSpeed: 100
   _moveRotateSpeed: 5
   _moveSpeed: 3
@@ -630,6 +631,7 @@ MonoBehaviour:
   damageBullet: 10
   tagTarget: Enemy
   shootInput: 114
+  fireRate: 1
   bulletPref: {fileID: 3066236912002965581, guid: e509e71aadff4d74aa1541e332c31ebb, type: 3}
 --- !u!114 &397723261
 MonoBehaviour:
@@ -1072,6 +1074,7 @@ MonoBehaviour:
     _backward: 274
     _left: 276
     _right: 275
+    _fire: 303
   _rotateSpeed: 100
   _moveRotateSpeed: 5
   _moveSpeed: 1
@@ -1125,6 +1128,7 @@ MonoBehaviour:
   damageBullet: 10
   tagTarget: Enemy
   shootInput: 303
+  fireRate: 5
   bulletPref: {fileID: 3066236912002965581, guid: e509e71aadff4d74aa1541e332c31ebb, type: 3}
 --- !u!114 &905789366
 MonoBehaviour:

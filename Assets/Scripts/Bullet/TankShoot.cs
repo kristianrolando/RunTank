@@ -46,4 +46,9 @@ public class TankShoot : MonoBehaviour
     {
         return pool.CreateObject(bulletPref, pos).gameObject;
     }
+
+    public void SetShootInput(KeyCode key)
+    {
+        shootInput = key;
+    }
 }
