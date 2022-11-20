@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingItem : MonoBehaviour
 {
-    public enum ItemType { bullet, health, immune}
+    public enum ItemType { health, immune}
     [SerializeField] ItemType typeItem;
     [SerializeField] float immune_time = 10f;
     [SerializeField] float health_recover = 20f;
@@ -15,15 +15,13 @@ public class FloatingItem : MonoBehaviour
         {
             GameObject _obj = collision.gameObject;
             GetEffect(_obj);
+            Destroy(gameObject);
         }
     }
     void GetEffect(GameObject obj)
     {
         switch (typeItem)
         {
-            case ItemType.bullet:
-                Bullet(obj);
-                break;
             case ItemType.health:
                 Health(obj);
                 break;
@@ -33,10 +31,6 @@ public class FloatingItem : MonoBehaviour
             default:
                 break;
         }
-    }
-    void Bullet(GameObject obj)
-    {
-        
     }
     void Health(GameObject obj)
     {

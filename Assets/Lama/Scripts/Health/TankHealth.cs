@@ -17,6 +17,20 @@ public class TankHealth : MonoBehaviour, IDamageable
         healthSlider.maxValue = health;
         UpdateSlider();
     }
+    bool isImmune;
+    float timer;
+    private void Update()
+    {
+        if(isImmune)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                isImmune = false;
+            }
+        }
+        
+    }
     void UpdateSlider()
     {
         healthSlider.value = health;
@@ -24,11 +38,14 @@ public class TankHealth : MonoBehaviour, IDamageable
 
     public void GotDamage(float damage)
     {
-        health -= damage;
-        UpdateSlider();
-        if (health <= 0)
+        if(!isImmune)
         {
-            DieCondition();
+            health -= damage;
+            UpdateSlider();
+            if (health <= 0)
+            {
+                DieCondition();
+            }
         }
     }
     void DieCondition()
@@ -37,10 +54,11 @@ public class TankHealth : MonoBehaviour, IDamageable
     }
     public void HealthEffect(float health)
     {
-        
+        this.health += health;
     }
     public void ImmuneEffect(float immune)
     {
-
+        isImmune = true;
+        timer = immune;
     }
 }
