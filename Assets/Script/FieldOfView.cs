@@ -19,13 +19,18 @@ public class FieldOfView : MonoBehaviour
 
     public float turnSpeed = 10f;
 
+    private float fireCountdown = 1;
+
+
     [SerializeField]
-    private float fireCountdown;
+    private float _orFireCountdown;
 
     EnemyShoot shoot;
+    public EnemyMove move;
     private void Awake()
     {
         shoot = GetComponent<EnemyShoot>();
+        move = GetComponent<EnemyMove>();
     }
     // Start is called before the first frame update
     void Start()
@@ -86,15 +91,16 @@ public class FieldOfView : MonoBehaviour
     {
         if (player == null)
         {
-
+            move.isAttacking = false;
             return;
         }
+        move.isAttacking = true;
         LockOnTarget();
         if (fireCountdown <= 0f)
         {
             Debug.Log("Shoot");
             shoot.Shoot();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = _orFireCountdown;
         }
 
         fireCountdown -= Time.deltaTime;

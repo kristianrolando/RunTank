@@ -10,13 +10,23 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     [HideInInspector] public int id;
 
+    public EnemySpawner spawner;
+
+    public EnemyDetector detector;
+
     float health;
 
+    private void Start()
+    {
+        detector.spawner = spawner;
+        detector.health = this;
+    }
     private void OnEnable()
     {
         health = maxHealth;
         healthSlider.maxValue = health;
         UpdateSlider();
+        
     }
     void UpdateSlider()
     {
@@ -38,6 +48,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         var _s = _spawner.GetComponent<EnemySpawner>();
         _s.posSpawn[id].isFull = false;
         _s.enemyActive -= 1;
+        int idx = spawner.enemyList.IndexOf(gameObject);
+        spawner.enemyList.RemoveAt(idx);
         Destroy(gameObject);
     }
 }

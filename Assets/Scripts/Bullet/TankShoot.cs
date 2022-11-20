@@ -8,7 +8,7 @@ public class TankShoot : MonoBehaviour
     [SerializeField] float bulletSpeed;
     [SerializeField] float damageBullet;
     [SerializeField] string tagTarget = "Enemy";
-    [SerializeField] KeyCode shootInput;
+    public KeyCode shootInput;
 
     [SerializeField] Bullet bulletPref;
     PoolingSystem pool = new PoolingSystem();
@@ -33,5 +33,10 @@ public class TankShoot : MonoBehaviour
     public GameObject CreateObject(Vector3 pos)
     {
         return pool.CreateObject(bulletPref, pos).gameObject;
+    }
+
+    public void SetShootInput(KeyCode key)
+    {
+        shootInput = key;
     }
 }

@@ -24,7 +24,7 @@ public class TankMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetShootInput();
     }
 
     void Update()
@@ -73,5 +73,11 @@ public class TankMovement : MonoBehaviour
         var from = badanTank.transform;
         var to = atasTank.transform;
         badanTank.transform.rotation = Quaternion.Slerp(from.rotation, to.rotation, Time.deltaTime * _moveRotateSpeed);
+    }
+
+    private void SetShootInput()
+    {
+        TankShoot shoot = gameObject.GetComponent<TankShoot>();
+        shoot.SetShootInput(inputStruct._fire);
     }
 }
