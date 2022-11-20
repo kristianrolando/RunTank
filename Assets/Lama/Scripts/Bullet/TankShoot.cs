@@ -41,6 +41,7 @@ public class TankShoot : MonoBehaviour
     {
         GameObject _bullet = CreateObject(firePoint.position);
         var b = _bullet.GetComponent<Bullet>();
+        b.fromPlayer = true;
         b.damage = damageBullet;
         b.speed = bulletSpeed;
         b.tagTarget = tagTarget;

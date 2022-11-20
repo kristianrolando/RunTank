@@ -17,6 +17,12 @@ public class EnemyDetector : MonoBehaviour
         }
     }
 
+    public void GotDamage(float dmg)
+    {
+        EnemyHealth hlth = transform.parent.gameObject.GetComponent<EnemyHealth>();
+        hlth.GotDamage(dmg);
+    }
+
     private void checkIndex(GameObject obj)
     {
         int myIdx= spawner.enemyList.IndexOf(health.gameObject);

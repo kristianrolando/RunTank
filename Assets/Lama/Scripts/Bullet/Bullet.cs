@@ -13,6 +13,8 @@ public class Bullet : PoolObject
 
     Rigidbody rb;
     Vector3 startPos;
+
+    public bool fromPlayer;
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
@@ -42,8 +44,14 @@ public class Bullet : PoolObject
             other.gameObject.GetComponent<IDamageable>().GotDamage(damage);
             StoreToPool();
         }
+        if (other.gameObject.tag == "Detector" && fromPlayer)
+        {
+            other.GetComponent<EnemyDetector>().GotDamage(damage);
+            StoreToPool();
+        }
 
-        if(other.gameObject.tag != "Detector" || other.gameObject.tag != tagTarget)
+
+        if (other.gameObject.tag != tagTarget)
         {
             StoreToPool();
         }

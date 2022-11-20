@@ -18,6 +18,7 @@ public class EnemyShoot : MonoBehaviour
     {
         GameObject _bullet = CreateObject(firePoint.position);
         var b = _bullet.GetComponent<Bullet>();
+        b.fromPlayer = false;
         b.damage = damageBullet;
         b.speed = bulletSpeed;
         b.tagTarget = tagTarget;
