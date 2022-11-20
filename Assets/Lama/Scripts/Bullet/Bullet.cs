@@ -55,6 +55,6 @@ public class Bullet : PoolObject
         {
             StoreToPool();
         }
-        
+        VfxManager.Instance.PlayVfx("bullet explosion", transform.position);
     }
 }

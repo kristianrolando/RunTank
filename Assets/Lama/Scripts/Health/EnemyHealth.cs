@@ -44,6 +44,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
     void DieCondition()
     {
+        VfxManager.Instance.PlayVfx("die explosion", transform.position);
+        AudioManager.Instance.PlaySfx("die explosion");
         GameObject _spawner = FindObjectOfType<EnemySpawner>().gameObject;
         var _s = _spawner.GetComponent<EnemySpawner>();
         _s.posSpawn[id].isFull = false;

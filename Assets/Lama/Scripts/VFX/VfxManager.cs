@@ -14,6 +14,7 @@ public class VfxManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+        DontDestroyOnLoad(this);
     }
     public void PlayVfx(string name, Vector3 posSpawn)
     {
