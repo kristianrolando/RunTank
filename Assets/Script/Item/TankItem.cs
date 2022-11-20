@@ -35,6 +35,7 @@ public class TankItem : MonoBehaviour
 
         if(other.gameObject.tag == "PowerUpItem")
         {
+            other.gameObject.SetActive(false);
             PowerUpItem pwItem = GameObject.Find("Power Up Item Generator").GetComponent<PowerUpItem>();
             pwItem.CheckItem();
         }
