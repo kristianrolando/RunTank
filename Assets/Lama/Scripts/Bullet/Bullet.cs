@@ -49,12 +49,5 @@ public class Bullet : PoolObject
             other.GetComponent<EnemyDetector>().GotDamage(damage);
             StoreToPool();
         }
-
-
-        if (other.gameObject.tag != tagTarget)
-        {
-            StoreToPool();
-        }
-        
     }
 }
