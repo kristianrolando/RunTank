@@ -39,15 +39,26 @@ public class Bullet : PoolObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<IDamageable>() != null && other.gameObject.tag == tagTarget)
+        if (other.gameObject.GetComponent<IDamageable>() != null && other.gameObject.tag == tagTarget && !fromPlayer)
         {
             other.gameObject.GetComponent<IDamageable>().GotDamage(damage);
             StoreToPool();
+
+            return;
         }
         if (other.gameObject.tag == "Detector" && fromPlayer)
         {
             other.GetComponent<EnemyDetector>().GotDamage(damage);
             StoreToPool();
+
+            return;
+        }
+
+        if (other.gameObject.tag == "Tembok")
+        {
+            StoreToPool();
+
+            return;
         }
     }
 }

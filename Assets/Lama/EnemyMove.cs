@@ -17,12 +17,9 @@ public class EnemyMove : MonoBehaviour
         {
             return;
         }
-        var step = speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, target.gameObject.transform.position, step);
-
-        transform.LookAt(target.transform);
-
-        CheckTarget();
+        var step = speed * Time.deltaTime;
+        transform.LookAt(new Vector3(target.gameObject.transform.position.x, transform.position.y, target.gameObject.transform.position.z));
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     private void Start()
@@ -32,13 +29,13 @@ public class EnemyMove : MonoBehaviour
 
     private void CheckTarget()
     {
-        if(transform.position == target.gameObject.transform.position)
+        if(transform.position.x == target.gameObject.transform.position.x && transform.position.x == target.gameObject.transform.position.z)
         {
             RandomizeTarget();
         }
     }
 
-    private void RandomizeTarget()
+    public void RandomizeTarget()
     {
         int size = target.connectedPoint.Count;
         int random = Random.Range(0, size);

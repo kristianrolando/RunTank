@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ground
   - Tembok
+  - Waypoint
   layers:
   - Default
   - TransparentFX
