@@ -697,8 +697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 861616511624145593}
-  bulletSpeed: 4
-  damageBullet: 5
+  bulletSpeed: 15
+  damageBullet: 4
   tagTarget: Player
   bulletPref: {fileID: 3066236912002965581, guid: e509e71aadff4d74aa1541e332c31ebb,
     type: 3}

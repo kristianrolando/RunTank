@@ -98,7 +98,7 @@ public class FieldOfView : MonoBehaviour
         {
             Debug.Log("Shoot");
             shoot.Shoot();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = fireRate;
         }
 
         fireCountdown -= Time.deltaTime;

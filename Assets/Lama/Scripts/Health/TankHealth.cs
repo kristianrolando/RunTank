@@ -33,7 +33,7 @@ public class TankHealth : MonoBehaviour, IDamageable
     }
     void DieCondition()
     {
-
+        GameManager.instance.GameOver();
     }
     public void HealthEffect(float health)
     {

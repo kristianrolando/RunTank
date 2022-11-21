@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public int _score;
 
     public GameObject gameOverDisp;
+    public GameObject WinOverDisp;
+    public GameObject LoseOverDisp;
     public Text scoreGame;
 
     public static GameManager instance;
@@ -25,27 +27,30 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
 
-        // Update is called once per frame
-        void Update()
+    private void Start()
     {
-        TimerCountDown -= Time.deltaTime;
+        TimerCountDown = 0;
+        Time.timeScale = 1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        TimerCountDown += Time.deltaTime;
 
         float minutes = Mathf.FloorToInt(TimerCountDown / 60);
         float seconds = Mathf.FloorToInt(TimerCountDown % 60);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        score.text = "Score : " +  _score.ToString();
-        scoreGame.text = "Score : " +  _score.ToString();
+        score.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        scoreGame.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        if(TimerCountDown <= 0)
-        {
-            GameOver();
-        }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         gameOverDisp.SetActive(true);
+        LoseOverDisp.SetActive(true);
         Time.timeScale = 0;
     }
 
@@ -54,10 +59,17 @@ public class GameManager : MonoBehaviour
         _score += 1;
     }
 
-    public void GotoMenu()
+    public void GotoMenu(string ala)
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(ala);
 
+    }
+
+    public void Win()
+    {
+        gameOverDisp.SetActive(true);
+        WinOverDisp.SetActive(true);
+        Time.timeScale = 0;
     }
 }

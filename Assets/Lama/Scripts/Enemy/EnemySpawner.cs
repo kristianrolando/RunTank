@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
             enemyList.Add(obj);
             EnemyHealth health = obj.GetComponent<EnemyHealth>();
             health.spawner = this;
-            posSpawn[i].isFull = true;
+            //posSpawn[i].isFull = true;
         }
         else
         {
