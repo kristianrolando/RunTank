@@ -30,8 +30,12 @@ public class PlayerManager : MonoBehaviour
 
     private void ChangeMaterialColor()
     {
-        player1obj.SetMaterial(player1Mat[ColourData.instance.p1Colour].bodyMat);
-        player2obj.SetMaterial(player2Mat[ColourData.instance.p1Colour].bodyMat);
+        if(ColourData.instance != null)
+        {
+            player1obj.SetMaterial(player1Mat[ColourData.instance.p1Colour].bodyMat);
+            player2obj.SetMaterial(player2Mat[ColourData.instance.p2Colour].bodyMat);
+        }
+        
     }
 
     private void SetController()

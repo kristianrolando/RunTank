@@ -22,6 +22,9 @@ public class TankMovement : MonoBehaviour
     [SerializeField]
     private float _moveSpeed;
 
+    private float _slowSpeed;
+    private float _orSpeed;
+
     [SerializeField]
     private GameObject headObj;
 
@@ -30,7 +33,8 @@ public class TankMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _slowSpeed = _moveSpeed / 2;
+        _orSpeed = _moveSpeed;
     }
 
     void Update()
@@ -113,5 +117,21 @@ public class TankMovement : MonoBehaviour
         inputStruct._fire = obj._fire;
 
         SetShootInput();
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "Tembok")
+        {
+            _moveSpeed = _slowSpeed;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Tembok")
+        {
+            _moveSpeed = _orSpeed;
+        }
     }
 }

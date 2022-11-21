@@ -19,11 +19,8 @@ public class FieldOfView : MonoBehaviour
 
     public float turnSpeed = 10f;
 
-    private float fireCountdown = 1;
+    private float fireCountdown = 0f;
 
-
-    [SerializeField]
-    private float _orFireCountdown;
 
     EnemyShoot shoot;
     public EnemyMove move;
@@ -96,11 +93,12 @@ public class FieldOfView : MonoBehaviour
         }
         move.isAttacking = true;
         LockOnTarget();
+
         if (fireCountdown <= 0f)
         {
             Debug.Log("Shoot");
             shoot.Shoot();
-            fireCountdown = _orFireCountdown;
+            fireCountdown = 1f / fireRate;
         }
 
         fireCountdown -= Time.deltaTime;
