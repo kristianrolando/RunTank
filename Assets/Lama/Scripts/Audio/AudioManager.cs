@@ -41,8 +41,13 @@ public class AudioManager : MonoBehaviour
         sourceSfx.loop = false;
         sourceBgm.loop = true;
 
-        sourceSfx.volume = PlayerPrefs.GetFloat("sfx vol");
-        sourceBgm.volume = PlayerPrefs.GetFloat("bgm vol");
+        sourceSfx.volume = 1;
+        sourceBgm.volume = 1;
+        if (PlayerPrefs.HasKey("sfx vol") || PlayerPrefs.HasKey("bgm vol"))
+        {
+            sourceSfx.volume = PlayerPrefs.GetFloat("sfx vol");
+            sourceBgm.volume = PlayerPrefs.GetFloat("bgm vol");
+        }
     }
     public void PlaySfx(string message)
     {
@@ -56,7 +61,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayBgm(string message)
     {
-        Soundfx _sound = Array.Find(soundfx, sound => sound.name == message);
+        SoundBgm _sound = Array.Find(soundBgm, sound => sound.name == message);
         if (_sound == null)
         {
             Debug.LogError("Sound : " + message + " not found");
