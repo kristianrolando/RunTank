@@ -24,6 +24,8 @@ public class TankHealth : MonoBehaviour, IDamageable
 
     public void GotDamage(float damage)
     {
+
+        AudioPlayer.instance.Play("hit");
         health -= damage;
         UpdateSlider();
         if (health <= 0)

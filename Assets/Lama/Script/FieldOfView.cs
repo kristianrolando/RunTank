@@ -28,10 +28,15 @@ public class FieldOfView : MonoBehaviour
     {
         shoot = GetComponent<EnemyShoot>();
         move = GetComponent<EnemyMove>();
+        player = null;
+        StartCoroutine(FOVROutine());
     }
     // Start is called before the first frame update
     void Start()
     {
+        shoot = GetComponent<EnemyShoot>();
+        move = GetComponent<EnemyMove>();
+        player = null;
         StartCoroutine(FOVROutine());
     }
 
@@ -68,12 +73,14 @@ public class FieldOfView : MonoBehaviour
                 else
                 {
                     canSee = false;
+                    target = null;
                     player = null;
                 }
             }
             else
             {
                 canSee = false;
+                target = null;
                 player = null;
             }
         }
@@ -97,7 +104,7 @@ public class FieldOfView : MonoBehaviour
         if (fireCountdown <= 0f)
         {
             Debug.Log("Shoot");
-            shoot.Shoot();
+            shoot.Shoot(player);
             fireCountdown = fireRate;
         }
 

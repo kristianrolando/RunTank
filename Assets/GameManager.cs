@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         TimerCountDown = 0;
         Time.timeScale = 1;
+       // AudioPlayer.instance.Play("BGM");
     }
 
     // Update is called once per frame
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        AudioPlayer.instance.Play("win");
         gameOverDisp.SetActive(true);
         LoseOverDisp.SetActive(true);
         Time.timeScale = 0;
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        AudioPlayer.instance.Play("win");
         gameOverDisp.SetActive(true);
         WinOverDisp.SetActive(true);
         Time.timeScale = 0;

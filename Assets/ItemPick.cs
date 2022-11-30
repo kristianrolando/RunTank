@@ -10,7 +10,9 @@ public class ItemPick : MonoBehaviour
     {
         if(gameObject.name == other.gameObject.name)
         {
+            AudioPlayer.instance.Play("pick");
             ItemManager.instance.SpawnItem(index);
+            ItemManager.instance.HideItem(index);
             Destroy(gameObject);
         }
     }

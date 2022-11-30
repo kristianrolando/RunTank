@@ -11,6 +11,8 @@ public class Bullet : PoolObject
     [HideInInspector]
     public float damage;
 
+    public GameObject plyr;
+
     Rigidbody rb;
     Vector3 startPos;
 
@@ -39,8 +41,9 @@ public class Bullet : PoolObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<IDamageable>() != null && other.gameObject.tag == tagTarget && !fromPlayer)
+        if (other.gameObject.GetComponent<IDamageable>() != null && other.gameObject.tag == tagTarget && other.gameObject == plyr && !fromPlayer)
         {
+            Instantiate(vfxList.instance.vfxs[1], gameObject.transform.position, Quaternion.identity);
             other.gameObject.GetComponent<IDamageable>().GotDamage(damage);
             StoreToPool();
 
@@ -48,6 +51,7 @@ public class Bullet : PoolObject
         }
         if (other.gameObject.tag == "Detector" && fromPlayer)
         {
+            Instantiate(vfxList.instance.vfxs[1], gameObject.transform.position, Quaternion.identity);
             other.GetComponent<EnemyDetector>().GotDamage(damage);
             StoreToPool();
 
@@ -56,8 +60,9 @@ public class Bullet : PoolObject
 
         if (other.gameObject.tag == "Tembok")
         {
+            Instantiate(vfxList.instance.vfxs[1], gameObject.transform.position, Quaternion.identity);
             StoreToPool();
-
+            AudioPlayer.instance.Play("hit");
             return;
         }
     }

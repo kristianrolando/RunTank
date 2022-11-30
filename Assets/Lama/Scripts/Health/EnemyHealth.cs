@@ -35,6 +35,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void GotDamage(float damage)
     {
+        AudioPlayer.instance.Play("hit");
         health -= damage;
         UpdateSlider();
         if (health <= 0)
@@ -44,6 +45,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
     void DieCondition()
     {
+        Instantiate(vfxList.instance.vfxs[0], gameObject.transform.position, Quaternion.identity);
+        AudioPlayer.instance.Play("die");
         GameObject _spawner = FindObjectOfType<EnemySpawner>().gameObject;
         var _s = _spawner.GetComponent<EnemySpawner>();
         _s.posSpawn[id].isFull = false;

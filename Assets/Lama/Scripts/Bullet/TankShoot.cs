@@ -39,6 +39,7 @@ public class TankShoot : MonoBehaviour
     }
     void Shoot()
     {
+        AudioPlayer.instance.Play("shoot");
         GameObject _bullet = CreateObject(firePoint.position);
         var b = _bullet.GetComponent<Bullet>();
         b.fromPlayer = true;

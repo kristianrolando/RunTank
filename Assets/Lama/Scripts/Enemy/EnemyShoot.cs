@@ -14,8 +14,9 @@ public class EnemyShoot : MonoBehaviour
 
     
 
-    public void Shoot()
+    public void Shoot(GameObject trgt)
     {
+        AudioPlayer.instance.Play("shoote");
         GameObject _bullet = CreateObject(firePoint.position);
         var b = _bullet.GetComponent<Bullet>();
         b.fromPlayer = false;
@@ -23,6 +24,7 @@ public class EnemyShoot : MonoBehaviour
         b.speed = bulletSpeed;
         b.tagTarget = tagTarget;
         b.Move(firePoint);
+        b.plyr = trgt;
     }
 
     public GameObject CreateObject(Vector3 pos)
