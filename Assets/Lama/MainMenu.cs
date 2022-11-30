@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+    private string selectedMap;
+
+
     [SerializeField]
     private GameObject pause;
     
@@ -14,6 +17,9 @@ public class MainMenu : MonoBehaviour
     
     [SerializeField]
     private GameObject colorSelect;
+
+    [SerializeField]
+    private GameObject mapSelect;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +38,7 @@ public class MainMenu : MonoBehaviour
         pause.SetActive(true);
         mainMenu.SetActive(false);
         colorSelect.SetActive(false);
+        mapSelect.SetActive(false);
     }
 
 
@@ -40,17 +47,33 @@ public class MainMenu : MonoBehaviour
         pause.SetActive(false);
         mainMenu.SetActive(true);
         colorSelect.SetActive(false);
+        mapSelect.SetActive(false);
     }
 
     public void PlayButton()
     {
+        mapSelect.SetActive(true);
+        pause.SetActive(false);
+        mainMenu.SetActive(false);
+        colorSelect.SetActive(false);
+    }
+
+    public void ColorSelect()
+    {
+        mapSelect.SetActive(false);
         pause.SetActive(false);
         mainMenu.SetActive(false);
         colorSelect.SetActive(true);
     }
 
-    public void StartGame(string name)
+    public void StartGame()
     {
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(selectedMap);
+    }
+
+    public void SelectMap(string mapname)
+    {
+        selectedMap = mapname;
+        ColorSelect();
     }
 }

@@ -29,6 +29,7 @@ public class FieldOfView : MonoBehaviour
         shoot = GetComponent<EnemyShoot>();
         move = GetComponent<EnemyMove>();
         player = null;
+        StopCoroutine(FOVROutine());
         StartCoroutine(FOVROutine());
     }
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class FieldOfView : MonoBehaviour
         shoot = GetComponent<EnemyShoot>();
         move = GetComponent<EnemyMove>();
         player = null;
+        StopCoroutine(FOVROutine());
         StartCoroutine(FOVROutine());
     }
 
@@ -96,6 +98,12 @@ public class FieldOfView : MonoBehaviour
         if (player == null)
         {
             move.isAttacking = false;
+
+            shoot = GetComponent<EnemyShoot>();
+            move = GetComponent<EnemyMove>();
+            player = null;
+            StopCoroutine(FOVROutine());
+            StartCoroutine(FOVROutine());
             return;
         }
         move.isAttacking = true;

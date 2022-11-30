@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GAMEPLAY.unity
     guid: 6752cc162be24764a9b67b97866518f1
+  - enabled: 1
+    path: Assets/Scenes/HILLS_GAMEPLAY.unity
+    guid: e7abd99c188ffe34d9e7d0a94f1015e1
   m_configObjects: {}

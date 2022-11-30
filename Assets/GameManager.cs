@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverDisp;
     public GameObject WinOverDisp;
     public GameObject LoseOverDisp;
+    public GameObject PauseDisp;
     public Text scoreGame;
 
     public static GameManager instance;
@@ -74,5 +75,17 @@ public class GameManager : MonoBehaviour
         gameOverDisp.SetActive(true);
         WinOverDisp.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void OnPause()
+    {
+        Time.timeScale = 0;
+        PauseDisp.SetActive(true);
+
+    }
+    public void OnUnPause()
+    {
+        Time.timeScale = 1;
+        PauseDisp.SetActive(false);
     }
 }
